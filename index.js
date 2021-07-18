@@ -131,6 +131,7 @@ async function isInRoom(user) {
     }
   } catch (error) {
     console.error(error);
+    return null;
   }
   return false;
 }
@@ -139,16 +140,19 @@ async function main() {
 
   while (true) {
     console.log(`🎵 Waiting until user ${nconf.get("user")} is in a room...`);
-    while (false === (await isInRoom(nconf.get("user")))) {
+    let inRoom; // TODO: yuck
+    do {
+      inRoom = await isInRoom(nconf.get("user"));
       sleep(interval, () => {});
-    }
+    } while (inRoom === false || inRoom == null);
 
     console.log(`👁 Start spectating.`);
     spectate();
 
-    while (true === (await isInRoom(nconf.get("user")))) {
+    do {
+      inRoom = await isInRoom(nconf.get("user"));
       sleep(interval, () => {});
-    }
+    } while (inRoom === true || inRoom == null);
 
     console.log(
       `👻User ${nconf.get("user")} is not in a room anymore. Leave the room.`
