@@ -19,8 +19,10 @@ Install ETT on PC (from either Steam or Oculus).
 
 1. Unequip headset, double click ElevenStartJust2d.bat file in PC ETT installation folder to run the game in 2d. This will launch ETT using the guest account.
 
-1. Adjust view to how you want to spectate the game (WASDQE, right mouse click to move around. Do NOT use +/- button.).
-   Then Use shift+8 to save this view.
+   1. Make sure the PC client only has one friend, which is your main account (which is running on the headset). Alternatively, you can make sure the main account will be the first user in the "friend list" of the guest account.
+
+   1. Adjust view to how you want to spectate the game (WASDQE, right mouse click to move around. Do NOT use +/- button.).
+      Then Use shift+8 to save this view.
 
 1. Run `node index.js` in ett-auto-sepctate folder. This should output something like `Wait until user SolidSlime is in a room...`
 
