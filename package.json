@@ -1,0 +1,19 @@
+{
+  "name": "ett-auto-spectate",
+  "version": "1.0.0",
+  "description": "Makes the 2d Eleven Table Tennis client automatically follow ETT matches played on the headset.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "spy": "node getLocation.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SolidSlime",
+  "license": "ISC",
+  "dependencies": {
+    "nconf": "^0.11.3",
+    "node-fetch": "^2.6.1",
+    "prompt-sync": "^4.2.0",
+    "robotjs": "^0.6.0"
+  }
+}
