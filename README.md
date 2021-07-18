@@ -26,6 +26,8 @@ Install ETT on PC (from either Steam or Oculus).
 
 1. Run `node index.js` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Wait until user <your-user-name> is in a room...`
 
+1. Make sure the 2d ETT client is running on the main monitor and using full screen. Nothing should be in front of it.
+
 1. Put on the headset and start playing. Now the script running on PC will automatically join the room when you join one, and leaves when you leave one.
 
 ## Contact
