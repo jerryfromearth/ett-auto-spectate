@@ -3,13 +3,12 @@ var nconf = require("nconf");
 const fetch = require("node-fetch");
 const prompt = require("prompt-sync")();
 
-const user = "[w]SolidSlime";
 const configFile = "config.json";
 const interval = 5 * 1000; // in ms
 const neutralCamNr = 0;
 const spectatorCamNr = 8;
 const supportedResolutions = [{ width: 1920, height: 1080 }];
-let inRoom = false;
+let firstSpectate = true;
 
 // Busy sleep function
 function sleep(ms, callback) {
@@ -55,7 +54,10 @@ function spectate() {
   sleep(2000, () => {});
 
   // Hide camera
-  type("f");
+  if (firstSpectate === true) {
+    type("f");
+    firstSpectate = false;
+  }
 
   // Switch to spectate view
   type(spectatorCamNr.toString());
@@ -108,9 +110,11 @@ function init() {
     );
     nconf.set("user", user);
     nconf.save();
+    console.log(`Config is written to ${configFile}`);
   }
   console.log(`Going to spectate user ${nconf.get("user")} when match starts.`);
-  console.log(`Done.`);
+
+  console.log(`All Done.`);
 }
 
 async function isInRoom(user) {
@@ -134,19 +138,21 @@ async function main() {
   init();
 
   while (true) {
-    console.log(`🎵 Waiting until user ${user} is in a room...`);
-    while (false === (await isInRoom(user))) {
+    console.log(`🎵 Waiting until user ${nconf.get("user")} is in a room...`);
+    while (false === (await isInRoom(nconf.get("user")))) {
       sleep(interval, () => {});
     }
 
     console.log(`👁 Start spectating.`);
     spectate();
 
-    while (true === (await isInRoom(user))) {
+    while (true === (await isInRoom(nconf.get("user")))) {
       sleep(interval, () => {});
     }
 
-    console.log(`👻User ${user} is not in a room anymore. Leave the room.`);
+    console.log(
+      `👻User ${nconf.get("user")} is not in a room anymore. Leave the room.`
+    );
 
     leaveRoom();
   }
