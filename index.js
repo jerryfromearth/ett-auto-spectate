@@ -64,6 +64,9 @@ function spectate() {
 
   // Hide menu
   type("m");
+
+  // Hide mouse
+  clickPos(1920, 1080);
 }
 
 function leaveRoom() {
