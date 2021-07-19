@@ -24,7 +24,7 @@ Install ETT on PC (from either Steam or Oculus).
    1. Adjust view to how you want to spectate the game (WASDQE, right mouse click to move around. Do NOT use +/- button.).
       Then Use shift+8 to save this view.
 
-1. Run `node index.js` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Wait until user <your-user-name> is in a room...`
+1. Run `npm start` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Wait until user <your-user-name> is in a room...`
 
 1. Make sure the 2d ETT client is running on the main monitor and using full screen. Nothing should be in front of it.
 

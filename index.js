@@ -43,7 +43,7 @@ function joinRoom() {
   clickPos(1551, 456);
 
   // Join room can take a while
-  sleep(500, () => {});
+  sleep(2000, () => {});
 
   // Click "join room" button
   // DANGER OPERATION. IF USER IS NOT IN THE ROOM, THIS LOCATION WOULD BE "REMOVE FRIEND"
