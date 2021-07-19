@@ -37,6 +37,7 @@ Please contact SolidSlime#2677 on discord for questions.
 ## TODO
 
 - Make other resolutions work
+- Add another viewing angle key (9) for away matches.
 - Write more instructions
 - OCR the texts
 - Handle the case when spectator is kicked out from the room (don't rejoin)
