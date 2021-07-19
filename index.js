@@ -6,16 +6,15 @@ const prompt = require("prompt-sync")();
 const configFile = "config.json";
 const interval = 5 * 1000; // in ms
 const neutralCamNr = 0;
-const spectatorCamNr = 8;
+const homeCamNr = 8;
+const awayCamNr = 9;
 const supportedResolutions = [{ width: 1920, height: 1080 }];
-let firstSpectate = true;
+let firstMatch = true;
 
 // Busy sleep function
 function sleep(ms, callback) {
   var stop = new Date().getTime();
-  while (new Date().getTime() < stop + ms) {
-    //console.log(stop + ms);
-  }
+  while (new Date().getTime() < stop + ms) {}
   callback();
 }
 
@@ -30,9 +29,9 @@ function type(str) {
   robot.keyTap(str);
 }
 
-function spectate() {
+function joinRoom() {
   // Press somewhere in the main screen to switch to ETT
-  clickPos(42, 42);
+  clickPos(0, 0);
 
   // Press 0 to switch to default view
   type(neutralCamNr.toString());
@@ -54,13 +53,13 @@ function spectate() {
   sleep(2000, () => {});
 
   // Hide camera
-  if (firstSpectate === true) {
+  if (firstMatch === true) {
     type("f");
-    firstSpectate = false;
+    firstMatch = false;
   }
 
   // Switch to spectate view
-  type(spectatorCamNr.toString());
+  type(homeCamNr.toString());
 
   // Hide menu
   type("m");
@@ -85,7 +84,7 @@ function leaveRoom() {
 
 function init() {
   let screenSize = robot.getScreenSize();
-  console.log(`💻Initiating...`);
+  console.log(`💻 Initiating...`);
 
   // Check resolution
   console.log(`Screen resolution: ${screenSize.width}x${screenSize.height}`);
@@ -122,6 +121,7 @@ function init() {
 
 async function isInRoom(user) {
   // TODO: This can be done via OCR instead, to minimize server load
+  // OR....can also get it from the logs
   try {
     let url =
       "http://elevenlogcollector-env.js6z6tixhb.us-west-2.elasticbeanstalk.com/ElevenServerLiteSnapshot";
@@ -150,7 +150,7 @@ async function main() {
     } while (inRoom === false || inRoom == null);
 
     console.log(`👁 Start spectating.`);
-    spectate();
+    joinRoom();
 
     do {
       inRoom = await isInRoom(nconf.get("user"));
@@ -158,7 +158,7 @@ async function main() {
     } while (inRoom === true || inRoom == null);
 
     console.log(
-      `👻User ${nconf.get("user")} is not in a room anymore. Leave the room.`
+      `👻 User ${nconf.get("user")} is not in a room anymore. Leave the room.`
     );
 
     leaveRoom();
