@@ -39,6 +39,7 @@ Please contact SolidSlime#2677 on discord for questions.
 - Make other resolutions work
 - Convert to typescript
 - Add another viewing angle key (9) for away matches.
+- Fix bug where sometimes the menu is shown while spectating the game.
 - Write more instructions
 - OCR the texts
 - Handle the case when spectator is kicked out from the room (don't rejoin)

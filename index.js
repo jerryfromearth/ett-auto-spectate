@@ -95,7 +95,9 @@ function joinRoom() {
   // Switch to spectate view
   type(homeCamNr.toString());
 
-  // TODO:
+  // TODO: Looks like if the game has already started when spectator joins the room, then the menu would already be hidden.
+  //       In which case, pressing m here will reveal the menu.
+  //       But if the game hasn't already started when spectator joins the room, then pressing m here will hide the menu successfully.
   // Hide menu
   type("m");
 
