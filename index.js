@@ -8,7 +8,11 @@ const interval = 5 * 1000; // in ms
 const neutralCamNr = 0;
 const homeCamNr = 8;
 const awayCamNr = 9;
-const supportedResolutions = [{ width: 1920, height: 1080 }];
+const supportedResolutions = [
+  { width: 1920, height: 1080 },
+  { width: 3840, height: 2160 },
+];
+let resolutionId; // Id of the resolution in supportedResolutions that matches user's main screen
 let firstMatch = true;
 
 // Busy sleep function
@@ -18,36 +22,66 @@ function sleep(ms, callback) {
   callback();
 }
 
-function clickButton(button) {}
-function clickPos(x, y) {
+class Position {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+const mappings = [
+  {
+    ACTIVATEWINDOW: new Position(10, 10),
+    HOME: new Position(632, 842),
+    USERPROFILE: new Position(1551, 456),
+    JOINROOM: new Position(902, 411),
+    HIDEMOUSE: new Position(1920, 1080),
+    EXITROOM: new Position(1199, 912),
+  },
+  {
+    ACTIVATEWINDOW: new Position(10, 10),
+    HOME: new Position(1249, 1678),
+    USERPROFILE: new Position(3054, 890),
+    JOINROOM: new Position(1821, 817),
+    HIDEMOUSE: new Position(3840, 2160),
+    EXITROOM: new Position(2385, 1797),
+  },
+];
+
+function _clickPos(x, y) {
   robot.moveMouse(x, y);
   // Has to break keypress into down&up, otherwise unity doesn't register it
   robot.mouseToggle("down", "left");
   robot.mouseToggle("up", "left");
 }
+
+function clickButton(button) {
+  _clickPos(mappings[resolutionId][button].x, mappings[resolutionId][button].y);
+  console.log(`Clicked ${button}`);
+}
 function type(str) {
+  console.log(`Pressed ${str}`);
   robot.keyTap(str);
 }
 
 function joinRoom() {
   // Press somewhere in the main screen to switch to ETT
-  clickPos(0, 0);
+  clickButton("ACTIVATEWINDOW");
 
   // Press 0 to switch to default view
   type(neutralCamNr.toString());
 
   // Go to home menu
-  clickPos(632, 842);
+  clickButton("HOME");
 
   // Click my main user profile
-  clickPos(1551, 456);
+  clickButton("USERPROFILE");
 
   // Join room can take a while
   sleep(2000, () => {});
 
   // Click "join room" button
   // DANGER OPERATION. IF USER IS NOT IN THE ROOM, THIS LOCATION WOULD BE "REMOVE FRIEND"
-  clickPos(902, 411);
+  clickButton("JOINROOM");
 
   // Join room can take a while
   sleep(2000, () => {});
@@ -61,19 +95,20 @@ function joinRoom() {
   // Switch to spectate view
   type(homeCamNr.toString());
 
+  // TODO:
   // Hide menu
   type("m");
 
   // Hide mouse
-  clickPos(1920, 1080);
+  clickButton("HIDEMOUSE");
 }
 
-function leaveRoom() {
+function exitRoom() {
   // Press 0 to switch to default view
   type("0");
 
   // Click exit room
-  clickPos(1199, 912);
+  clickButton("EXITROOM");
 
   // Exit room can take a while
   sleep(2000, () => {});
@@ -83,22 +118,30 @@ function leaveRoom() {
 }
 
 function init() {
-  let screenSize = robot.getScreenSize();
+  resolution = robot.getScreenSize();
   console.log(`💻 Initiating...`);
 
   // Check resolution
-  console.log(`Screen resolution: ${screenSize.width}x${screenSize.height}`);
-  if (
-    supportedResolutions.filter(
-      (resolution) =>
-        resolution.width === screenSize.width &&
-        resolution.height === screenSize.height
-    ).length === 0
+  console.log(`Screen resolution: ${resolution.width}x${resolution.height}`);
+
+  for (
+    resolutionId = 0;
+    resolutionId < supportedResolutions.length;
+    resolutionId++
   ) {
+    if (
+      supportedResolutions[resolutionId].width === resolution.width &&
+      supportedResolutions[resolutionId].height === resolution.height
+    ) {
+      break;
+    }
+  }
+
+  if (resolutionId == supportedResolutions.length) {
     console.log(
       `Only these resolutions are supported for now: ${JSON.stringify(
         supportedResolutions
-      )}`
+      )}. If you have a resolution to be supported, please contact the author of this project`
     );
     process.exit(1);
   }
@@ -161,7 +204,7 @@ async function main() {
       `👻 User ${nconf.get("user")} is not in a room anymore. Leave the room.`
     );
 
-    leaveRoom();
+    exitRoom();
   }
 }
-main();
+//main();

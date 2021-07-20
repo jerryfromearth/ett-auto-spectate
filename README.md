@@ -13,7 +13,7 @@ Install ETT on PC (from either Steam or Oculus).
 
 ## Run it
 
-1. Make sure the main monitor is set to 1920x1080 resolution. This is the only resolution supported for now.
+1. Make sure the main monitor is set to 1920x1080 or 3840x2160 resolution. These are the only resolutions supported for now.
 
 1. Make sure headset isn't plugged to the PC. Launch ETT on your headset, and make sure it has at least loaded the friend list.
 
@@ -37,6 +37,7 @@ Please contact SolidSlime#2677 on discord for questions.
 ## TODO
 
 - Make other resolutions work
+- Convert to typescript
 - Add another viewing angle key (9) for away matches.
 - Write more instructions
 - OCR the texts
