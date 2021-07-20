@@ -176,7 +176,7 @@ async function isInRoom(user) {
       return true;
     }
   } catch (error) {
-    console.error(error);
+    console.error("Timeout");
     return null;
   }
   return false;
@@ -207,4 +207,4 @@ async function main() {
     exitRoom();
   }
 }
-//main();
+main();
