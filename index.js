@@ -31,19 +31,19 @@ class Position {
 const mappings = [
   {
     ACTIVATEWINDOW: new Position(10, 10),
-    HOME: new Position(632, 842),
-    USERPROFILE: new Position(1551, 456),
-    JOINROOM: new Position(902, 411),
+    HOME: new Position(600, 900),
+    USERPROFILE: new Position(1521, 488),
+    JOINROOM: new Position(900, 430),
     HIDEMOUSE: new Position(1920, 1080),
-    EXITROOM: new Position(1199, 912),
+    EXITROOM: new Position(1217, 974),
   },
   {
     ACTIVATEWINDOW: new Position(10, 10),
-    HOME: new Position(1249, 1678),
-    USERPROFILE: new Position(3054, 890),
-    JOINROOM: new Position(1821, 817),
+    HOME: new Position(1250, 1760),
+    USERPROFILE: new Position(2977, 983),
+    JOINROOM: new Position(1813, 875),
     HIDEMOUSE: new Position(3840, 2160),
-    EXITROOM: new Position(2385, 1797),
+    EXITROOM: new Position(2400, 1900),
   },
 ];
 
@@ -120,10 +120,10 @@ function exitRoom() {
 }
 
 function init() {
-  resolution = robot.getScreenSize();
   console.log(`💻 Initiating...`);
 
   // Check resolution
+  resolution = robot.getScreenSize();
   console.log(`Screen resolution: ${resolution.width}x${resolution.height}`);
 
   for (
@@ -148,12 +148,31 @@ function init() {
     process.exit(1);
   }
 
+  // Make sure ETT is already running, because we will save its initial camera view to key 0
+  let waitTimeout = 15;
+  console.log(
+    `Make sure you have already launched 2d ETT before running this script!
+    If 2d ETT hasn't been launched yet, or if you have changed the initial camera view of 2d ETT after launching it, 
+    please press ctrl+c within ${waitTimeout} seconds. 
+    Also make sure ETT is running on main screen in full screen mode.`
+  );
+  for (let i = waitTimeout; i >= 0; i--) {
+    sleep(1000, () => {});
+    process.stdout.write(`${i}.`);
+  }
+  console.log("");
+
+  // Save initial camera view to key 0
+  clickButton("ACTIVATEWINDOW");
+  robot.keyTap("0", "shift");
+  console.log("Saved initial camera view to key 0");
+
   // Load config
   console.log(`Loading config from ${configFile}`);
   nconf.file(configFile);
   if (undefined === nconf.get("user")) {
     let user = prompt(
-      "What's your player name that is running in the VR device? "
+      "What's your ETT player name that is running in the VR device? "
     );
     nconf.set("user", user);
     nconf.save();
