@@ -148,24 +148,10 @@ function init() {
     process.exit(1);
   }
 
-  // Make sure ETT is already running, because we will save its initial camera view to key 0
-  let waitTimeout = 15;
   console.log(
-    `Make sure you have already launched 2d ETT before running this script!
-    If 2d ETT hasn't been launched yet, or if you have changed the initial camera view of 2d ETT after launching it, 
-    please press ctrl+c within ${waitTimeout} seconds. 
-    Also make sure ETT is running on main screen in full screen mode.`
+    `Please make sure 2d ETT is running on main screen in full screen mode and you haven't changed its camera position&angle.
+If you have changed main account's user name, please edit config.json and relaunch script.`
   );
-  for (let i = waitTimeout; i >= 0; i--) {
-    sleep(1000, () => {});
-    process.stdout.write(`${i}.`);
-  }
-  console.log("");
-
-  // Save initial camera view to key 0
-  clickButton("ACTIVATEWINDOW");
-  robot.keyTap("0", "shift");
-  console.log("Saved initial camera view to key 0");
 
   // Load config
   console.log(`Loading config from ${configFile}`);
@@ -191,13 +177,14 @@ async function isInRoom(user) {
       "http://elevenlogcollector-env.js6z6tixhb.us-west-2.elasticbeanstalk.com/ElevenServerLiteSnapshot";
     let settings = { method: "Get" };
     const res = await fetch(url, settings);
+    process.stdout.write(`.`);
     const json = await res.json();
     users = json.UsersInRooms.filter((obj) => obj.UserName === user);
     if (users.length > 0) {
       return true;
     }
   } catch (error) {
-    console.error("Timeout");
+    process.stdout.write(`x`);
     return null;
   }
   return false;
@@ -212,6 +199,12 @@ async function main() {
       inRoom = await isInRoom(nconf.get("user"));
       sleep(interval, () => {});
     } while (inRoom === false || inRoom == null);
+    console.log("");
+
+    // Save initial camera view to key 0
+    clickButton("ACTIVATEWINDOW");
+    robot.keyTap("0", "shift");
+    console.log("Saved initial camera view to key 0");
 
     console.log(`👁 Start spectating.`);
     joinRoom();
@@ -220,6 +213,7 @@ async function main() {
       inRoom = await isInRoom(nconf.get("user"));
       sleep(interval, () => {});
     } while (inRoom === true || inRoom == null);
+    console.log("");
 
     console.log(
       `👻 User ${nconf.get("user")} is not in a room anymore. Leave the room.`

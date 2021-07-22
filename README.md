@@ -30,7 +30,7 @@ Exit 2d ETT, so next time it will be launched with the initial camera view.
 
    1. Make sure the "\_guest" account" only has one friend, which is your main account (which is running on the headset). Alternatively, you can make sure the main account will be the first user in the "friend list" of the guest account.
 
-1. Run `npm start` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Wait until user <your-user-name> is in a room...`
+1. Run `npm start` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Waiting until user <your-user-name> is in a room...`
 
 1. Make sure the 2d ETT client is running on the main monitor and using full screen. Nothing should be in front of it.
 
