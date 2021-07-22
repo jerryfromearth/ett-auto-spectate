@@ -11,12 +11,10 @@ Run this command in the ett-auto-spectate folder to install dependencies locally
 
 Install ETT on PC (from either Steam or Oculus).
 
-double click ElevenStartJust2d.bat file in PC ETT installation folder to run the game in 2d. This will launch ETT using the guest account.
-
-1.  Make sure the PC client only has one friend, which is your main account (which is running on the headset). Alternatively, you can make sure the main account will be the first user in the "friend list" of the guest account.
+Double click ElevenStartJust2d.bat file in PC ETT installation folder to run the game in 2d.
 
 1.  Adjust view to how you want to spectate the game (WASDQE, right mouse click to move around. Do NOT use +/- button.).
-    Then Use shift+8 to save this view.
+    Then Use `shift+8` to save this view.
 
 Exit 2d ETT, so next time it will be launched with the initial camera view.
 
@@ -28,7 +26,9 @@ Exit 2d ETT, so next time it will be launched with the initial camera view.
 
 1. Unequip headset,
 
-1. Launch 2d ETT in full screen view. Do not change camera view! If possible, don't click anywhere in it.
+1. Launch 2d ETT in full screen view. This one shall login with the "\_guest" account. Do not change the default camera view, because this will be used later by the script!
+
+   1. Make sure the "\_guest" account" only has one friend, which is your main account (which is running on the headset). Alternatively, you can make sure the main account will be the first user in the "friend list" of the guest account.
 
 1. Run `npm start` in ett-auto-sepctate folder. If this is the first time you run it, the script will prompt you for the name for the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Wait until user <your-user-name> is in a room...`
 
