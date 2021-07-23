@@ -2,6 +2,8 @@
 
 This script runs on PC. It will make the 2d Eleven Table Tennis client automatically follow ETT matches played on the headset.
 
+Example video: https://www.youtube.com/watch?v=NF-jWgePDrM
+
 ## Preparation
 
 Install nodejs if you haven't. (https://nodejs.org/en/download/)
@@ -39,6 +41,10 @@ Exit 2d ETT, so next time it will be launched with the initial camera view.
 ## Contact
 
 Please contact SolidSlime#2677 on discord for questions.
+
+## Recomendation
+
+I recommend to use the scoreboard overlay by Cristy94(XCS): https://github.com/Cristy94/eleven-vr-scoreboard
 
 ## TODO
 
