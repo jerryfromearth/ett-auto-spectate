@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const prompt = require("prompt-sync")();
 
 const configFile = "config.json";
-const interval = 5 * 1000; // in ms
+const interval = 2 * 1000; // in ms
 const neutralCamNr = 0;
 const homeCamNr = 8;
 const awayCamNr = 9;
@@ -95,14 +95,13 @@ function joinRoom() {
   // Switch to spectate view
   type(homeCamNr.toString());
 
-  // TODO: Looks like if the game has already started when spectator joins the room, then the menu would already be hidden.
-  //       In which case, pressing m here will reveal the menu.
-  //       But if the game hasn't already started when spectator joins the room, then pressing m here will hide the menu successfully.
-  // Hide menu
-  type("m");
-
   // Hide mouse
   clickButton("HIDEMOUSE");
+
+  // // Hide menu, if not in match?
+  // if (false == isInMatch()) {
+  //   type("m");
+  // }
 }
 
 function exitRoom() {
@@ -167,6 +166,28 @@ If you have changed main account's user name, please edit config.json and relaun
   console.log(`Going to spectate user ${nconf.get("user")} when match starts.`);
 
   console.log(`All Done.`);
+}
+
+async function isInMatch(user) {
+  try {
+    // https://github.com/ForFunLabs/webapi
+    let url = "https://elevenvr.club/api/v1/accounts/4008/matches/latest";
+    let settings = { method: "Get" };
+    const res = await fetch(url, settings);
+    process.stdout.write(`:`);
+    const json = await res.json();
+    let data = json.data;
+    console.log(data);
+    if (data.state == 0 || data.state < 0) {
+      console.log("Match in progress");
+      return true;
+    }
+  } catch (error) {
+    process.stdout.write(`X`);
+    return null;
+  }
+  console.log("Not in match");
+  return false;
 }
 
 async function isInRoom(user) {
