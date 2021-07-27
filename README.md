@@ -22,7 +22,7 @@ Exit 2d ETT, so next time it will be launched with the initial camera view.
 
 ## Run it
 
-1. Make sure the main monitor is set to 1920x1080 or 3840x2160 resolution. These are the only resolutions supported for now.
+1. Make sure the main monitor is set to 1920x1080, 3840x2160 or 2560x1440 resolution. These are the only resolutions supported for now.
 
 1. Make sure headset isn't plugged to the PC. Launch ETT on your headset, and make sure it has at least loaded the friend list.
 

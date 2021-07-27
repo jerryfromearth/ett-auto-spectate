@@ -11,6 +11,7 @@ const awayCamNr = 9;
 const supportedResolutions = [
   { width: 1920, height: 1080 },
   { width: 3840, height: 2160 },
+  { width: 2560, height: 1440 },
 ];
 let resolutionId; // Id of the resolution in supportedResolutions that matches user's main screen
 let firstMatch = true;
@@ -44,6 +45,14 @@ const mappings = [
     JOINROOM: new Position(1813, 875),
     HIDEMOUSE: new Position(3840, 2160),
     EXITROOM: new Position(2400, 1900),
+  },
+  {
+    ACTIVATEWINDOW: new Position(10, 10),
+    HOME: new Position(800, 1200),
+    USERPROFILE: new Position(2027, 653),
+    JOINROOM: new Position(1200, 575),
+    HIDEMOUSE: new Position(2560, 1440),
+    EXITROOM: new Position(1625, 1300),
   },
 ];
 
