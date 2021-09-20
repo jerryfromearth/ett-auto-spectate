@@ -28,7 +28,7 @@ Exit 2d ETT, so next time it will be launched with the initial camera view.
 
 1. Unequip headset,
 
-1. Launch 2d ETT in full screen view. This one shall login with the "\_guest" account. Do not change the default camera view, because this will be used later by the script!
+1. Launch 2d ETT. If it's not using full screen, press alt+enter immediately. This one shall login with the "\_guest" account. Do not change the default camera angle&position, because this angle&position will be used later by the script!
 
    1. Make sure the "\_guest" account" only has one friend, which is your main account (which is running on the headset). Alternatively, you can make sure the main account will be the first user in the "friend list" of the guest account.
 
