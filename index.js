@@ -12,6 +12,8 @@ const supportedResolutions = [
   { width: 1920, height: 1080 },
   { width: 3840, height: 2160 },
   { width: 2560, height: 1440 },
+  { width: 3440, height: 1440 },
+  { width: 2560, height: 1080 },
 ];
 let resolutionId; // Id of the resolution in supportedResolutions that matches user's main screen
 let firstMatch = true;
@@ -53,6 +55,22 @@ const mappings = [
     JOINROOM: new Position(1200, 575),
     HIDEMOUSE: new Position(2560, 1440),
     EXITROOM: new Position(1625, 1300),
+  },
+  {
+    ACTIVATEWINDOW: new Position(440 + 10, 10),
+    HOME: new Position(440 + 600, 900),
+    USERPROFILE: new Position(440 + 1521, 488),
+    JOINROOM: new Position(440 + 900, 430),
+    HIDEMOUSE: new Position(440 + 1920, 1080),
+    EXITROOM: new Position(440 + 1217, 974),
+  },
+  {
+    ACTIVATEWINDOW: new Position(320 + 10, 10),
+    HOME: new Position(320 + 800, 1200),
+    USERPROFILE: new Position(320 + 2027, 653),
+    JOINROOM: new Position(320 + 1200, 575),
+    HIDEMOUSE: new Position(320 + 2560, 1440),
+    EXITROOM: new Position(320 + 1625, 1300),
   },
 ];
 
