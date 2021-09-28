@@ -100,14 +100,17 @@ function joinRoom() {
   // Go to home menu
   clickButton("HOME");
 
+  // Click button can take a while
+  sleep(500, () => {});
+
   // Click my main user profile
   clickButton("USERPROFILE");
 
-  // Join room can take a while
+  // Click button can take a while
   sleep(2000, () => {});
 
   // Click "join room" button
-  // DANGER OPERATION. IF USER IS NOT IN THE ROOM, THIS LOCATION WOULD BE "REMOVE FRIEND"
+  // DANGEROUS OPERATION. IF USER IS NOT IN THE ROOM, THIS LOCATION WOULD BE "REMOVE FRIEND"
   clickButton("JOINROOM");
 
   // Join room can take a while
@@ -184,7 +187,7 @@ If you have changed main account's user name, please edit config.json and relaun
   nconf.file(configFile);
   if (undefined === nconf.get("user")) {
     let user = prompt(
-      "What's your ETT player name that is running in the VR device? "
+      "What's your ETT player name that is running in the VR device? (case sensitive) "
     );
     nconf.set("user", user);
     nconf.save();
