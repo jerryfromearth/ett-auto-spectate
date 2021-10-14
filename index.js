@@ -14,6 +14,8 @@ const supportedResolutions = [
   { width: 2560, height: 1440 },
   { width: 3440, height: 1440 },
   { width: 2560, height: 1080 },
+  { width: 3840, height: 1600 },
+  { width: 2560, height: 1066 },
 ];
 let resolutionId; // Id of the resolution in supportedResolutions that matches user's main screen
 let firstMatch = true;
@@ -33,6 +35,7 @@ class Position {
 }
 const mappings = [
   {
+	// { width: 1920, height: 1080 },
     ACTIVATEWINDOW: new Position(10, 10),
     HOME: new Position(600, 900),
     USERPROFILE: new Position(1521, 488),
@@ -41,6 +44,7 @@ const mappings = [
     EXITROOM: new Position(1217, 974),
   },
   {
+	// { width: 3840, height: 2160 },
     ACTIVATEWINDOW: new Position(10, 10),
     HOME: new Position(1250, 1760),
     USERPROFILE: new Position(2977, 983),
@@ -49,6 +53,7 @@ const mappings = [
     EXITROOM: new Position(2400, 1900),
   },
   {
+	// { width: 2560, height: 1440 },
     ACTIVATEWINDOW: new Position(10, 10),
     HOME: new Position(800, 1200),
     USERPROFILE: new Position(2027, 653),
@@ -57,6 +62,7 @@ const mappings = [
     EXITROOM: new Position(1625, 1300),
   },
   {
+	// { width: 3440, height: 1440 },
     ACTIVATEWINDOW: new Position(440 + 10, 10),
     HOME: new Position(440 + 800, 1200),
     USERPROFILE: new Position(440 + 2027, 653),
@@ -65,12 +71,31 @@ const mappings = [
     EXITROOM: new Position(440 + 1625, 1300),
   },
   {
+	// { width: 2560, height: 1080 },
     ACTIVATEWINDOW: new Position(320 + 10, 10),
     HOME: new Position(320 + 600, 900),
     USERPROFILE: new Position(320 + 1521, 488),
     JOINROOM: new Position(320 + 900, 430),
     HIDEMOUSE: new Position(320 + 1920, 1080),
     EXITROOM: new Position(320 + 1217, 974),
+  },
+  {
+	// { width: 3840, height: 1600 },
+    ACTIVATEWINDOW: new Position(10, 10),
+    HOME: new Position(1433, 1292),
+    USERPROFILE: new Position(2700, 730),
+    JOINROOM: new Position(1830, 650),
+    HIDEMOUSE: new Position(3840, 1600),
+    EXITROOM: new Position(2310, 1400),
+  },
+  {
+	// { width: 2560, height: 1066 },
+    ACTIVATEWINDOW: new Position(10, 10),
+    HOME: new Position(960, 870),
+    USERPROFILE: new Position(1800, 500),
+    JOINROOM: new Position(1230, 440),
+    HIDEMOUSE: new Position(2560, 1060),
+    EXITROOM: new Position(1537, 930),
   },
 ];
 

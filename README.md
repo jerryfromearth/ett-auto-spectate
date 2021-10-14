@@ -25,22 +25,34 @@ Exit 2d ETT.
 
 ## Run it
 
-1. Make sure the main monitor is set to 1920x1080, 3840x2160 or 2560x1440 resolution. These are the only resolutions supported for now.
-
 1. Make sure headset isn't plugged to the PC. Launch ETT on your headset, click "OK" and make sure it has at least loaded the friend list.
 
 1. Unequip headset for now.
 
-2. Double click `ElevenStartJust2d.bat` file in **PC ETT installation folder** to run the game in 2d. If it's not using full screen, press alt+enter. Since your main ETT account has logged in on the headset, the PC version will login with the "\_guest" account. Do not change the camera view!
+1. Double click `ElevenStartJust2d.bat` file in **PC ETT installation folder** to run the game in 2d. If it's not using full screen, press alt+enter. Since your main ETT account has logged in on the headset, the PC version will login with the "\_guest" account. Do not change the camera view!
 
    1. Make sure the "\_guest" account" has and only has one friend, which is your main account (which is running on the headset).
 
-3. Double click `run.bat` in `ett-auto-spectate` folder. If this is the first time you run it, the script will ask you for the name of the account that is running on the headset (i.e. main account). After entering the name, the script should output something like `Waiting until user <your-user-name> is in a room...`. Minimize the script window if you only have one monitor. Otherwise make sure it's not on the main monitor.
+1. Double click `run.bat` in `ett-auto-spectate` folder. If this is the first time you run it, the script will ask you for the name of the account that is running on the headset (i.e. main account, case sensitive). After entering the name, the script should output something like `Waiting until user <your-user-name> is in a room...`. Minimize the script window if you only have one monitor. Otherwise make sure it's not on the main monitor.
 
-4. Make sure the 2d ETT is running on the main monitor and using full screen. No other window should be in front of it.
+1. Make sure the 2d ETT is running on the main monitor and using full screen. No other window should be in front of it.
 
-5. Put on the headset and start playing. Now the 2D ETT will automatically join the room when you join one (you can see it in the "room user list" on the right side in ETT), and leave when you leave one. 
+1. Put on the headset and start playing. Now the 2D ETT will automatically join the room when you join one (you can see it in the "room user list" on the right side in ETT), and leave when you leave one. 
    Note: After you join a room, always wait a few seconds (use the time to greet opponent etc.) to give the 2D ETT enough time to join the room. If it joins the room *during* a match, glitches might happen.
+
+To streamline the whole experience, I wrote this windows batch file (you will need to edit the paths, obviously):
+
+```
+cd /D G:\Oculus\Software\Software\for-fun-labs-eleven-table-tennis-vr
+call ElevenStartJust2d.bat
+
+cd /D E:\obs-studio\bin\64bit\
+start obs64.exe --startrecording --minimize-to-tray
+
+cd /D C:\Users\Jerry\Desktop\ETT\ett-auto-spectate
+run.bat
+```
+
 
 ## Contact
 
