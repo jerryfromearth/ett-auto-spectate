@@ -15,7 +15,7 @@ const supportedResolutions = [
   { width: 3440, height: 1440 },
   { width: 2560, height: 1080 },
   { width: 3840, height: 1600 },
-  { width: 2560, height: 1066 },
+  { width: 2560, height: 1067 },
 ];
 let resolutionId; // Id of the resolution in supportedResolutions that matches user's main screen
 let firstMatch = true;
@@ -89,7 +89,7 @@ const mappings = [
     EXITROOM: new Position(2310, 1400),
   },
   {
-	// { width: 2560, height: 1066 },
+	// { width: 2560, height: 1067 },
     ACTIVATEWINDOW: new Position(10, 10),
     HOME: new Position(960, 870),
     USERPROFILE: new Position(1800, 500),
