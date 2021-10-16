@@ -6,3 +6,4 @@ samples/
 *.spec
 username.txt
 build/
+__pycache__/

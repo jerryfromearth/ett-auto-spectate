@@ -6,7 +6,7 @@ Example video: https://www.youtube.com/watch?v=NF-jWgePDrM
 
 ## Preparation
 
-Install Python 3 if you haven't. (https://nodejs.org/en/download/)
+Install Python 3 if you haven't. (https://www.python.org/downloads/)
 
 Download the latest release from https://github.com/jerryfromearth/ett-auto-spectate/releases/, extract/decompress the `ett-auto-spectate` folder to any place you want.
 
