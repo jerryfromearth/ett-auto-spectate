@@ -1,4 +1,6 @@
-# Eleven Table Tennis Auto Spectate (python version)
+# Eleven Table Tennis Auto Spectate (nodejs version)
+
+**This is obsolete. Use the python version**
 
 This script runs on PC. It will make the 2D Eleven Table Tennis PC version automatically follow ETT matches played on the headset.
 
@@ -6,11 +8,9 @@ Example video: https://www.youtube.com/watch?v=NF-jWgePDrM
 
 ## Preparation
 
-Install Python 3 if you haven't. (https://nodejs.org/en/download/)
+Install nodejs if you haven't. (https://nodejs.org/en/download/)
 
 Download the latest release from https://github.com/jerryfromearth/ett-auto-spectate/releases/, extract/decompress the `ett-auto-spectate` folder to any place you want.
-
-Create a `username.txt` file in `ett-auto-spectate` and write your ETT username in it. Save it.
 
 Double click `prepare.bat` in `ett-auto-spectate` folder to install the dependencies locally.
 
@@ -35,11 +35,11 @@ Exit 2d ETT.
 
    1. Make sure the "\_guest" account" has and only has one friend, which is your main account (which is running on the headset).
 
-2. Double click `run.bat` in `ett-auto-spectate` folder. If all checks passed, the script should output something like `Waiting until user <your-user-name> is in a room...`. Minimize the script window if you only have one monitor. Otherwise make sure it's not on the main monitor.
+1. Double click `run.bat` in `ett-auto-spectate` folder. If this is the first time you run it, the script will ask you for the name of the account that is running on the headset (i.e. main account, case sensitive). After entering the name, the script should output something like `Waiting until user <your-user-name> is in a room...`. Minimize the script window if you only have one monitor. Otherwise make sure it's not on the main monitor.
 
-3. Make sure the 2d ETT is running on the main monitor and using full screen. No other window should be in front of it.
+1. Make sure the 2d ETT is running on the main monitor and using full screen. No other window should be in front of it.
 
-4. Put on the headset and start playing. Now the 2D ETT will automatically join the room when you join one (you can see it in the "room user list" on the right side in ETT), and leave when you leave one. 
+1. Put on the headset and start playing. Now the 2D ETT will automatically join the room when you join one (you can see it in the "room user list" on the right side in ETT), and leave when you leave one. 
    Note: After you join a room, always wait a few seconds (use the time to greet opponent etc.) to give the 2D ETT enough time to join the room. If it joins the room *during* a match, glitches might happen.
 
 To streamline the whole experience, I wrote this windows batch file (you will need to edit the paths, obviously):

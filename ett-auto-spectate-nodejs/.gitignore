@@ -3,6 +3,3 @@ log.txt
 config.json
 unused.js
 samples/
-*.spec
-username.txt
-build/

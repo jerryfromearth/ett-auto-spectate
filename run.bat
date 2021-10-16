@@ -1,2 +1,2 @@
 @ECHO OFF
-call npm start
+call python ett-auto-spectate.py
