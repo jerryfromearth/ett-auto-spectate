@@ -173,6 +173,7 @@ def exitRoom():
 
 
 def init():
+    global resolutionId
     print(f"💻 Initiating...")
 
     # Check resolution
@@ -233,6 +234,7 @@ def isInRoom(user):
 
 def main():
     user = init()
+    print(resolutionId)
 
     while True:
         print(f"🎵 Waiting until user {user} is in a room...")
