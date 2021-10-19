@@ -60,6 +60,8 @@ call ElevenStartJust2d.bat
 cd /D E:\obs-studio\bin\64bit\
 start obs64.exe --startrecording --minimize-to-tray
 
+timeout 20
+
 cd /D C:\Users\Jerry\Desktop\ETT\ett-auto-spectate
 start ett-auto-spectate.exe
 ```

@@ -137,10 +137,15 @@ def joinRoom():
     clickButton("USERPROFILE")
 
     # Click button can take a while
-    sleep(2)
+    sleep(1.5)
 
     # Click "join room" button
     # DANGEROUS OPERATION. IF USER IS NOT IN THE ROOM, THIS LOCATION WOULD BE "REMOVE FRIEND"
+    clickButton("JOINROOM")
+
+    # In the unfortunate even of user has left the room before the spectator manages to join the room,
+    # This location will be "remove friend", and then "add friend" because of the click above. So....add again.
+    sleep(0.1)
     clickButton("JOINROOM")
 
     # Join room can take a while
