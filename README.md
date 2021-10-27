@@ -1,4 +1,6 @@
-# Eleven Table Tennis Auto Spectate (python version)
+# Eleven Table Tennis Auto Spectate 
+
+[中文版本](https://github.com/jerryfromearth/ett-auto-spectate/blob/main/README.chs.md)
 
 This script runs on PC. It will make the 2D Eleven Table Tennis PC version automatically follow ETT matches played on the headset.
 
@@ -77,6 +79,7 @@ I recommend to use the scoreboard overlay by Cristy94(XCS): https://github.com/C
 
 ## TODO
 
+- Exit room only works when a match has ended
 - Make other resolutions work
 - Write more instructions
 - OCR the texts

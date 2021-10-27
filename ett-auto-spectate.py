@@ -5,7 +5,7 @@ from time import sleep
 import sys
 
 configFile = "username.txt"
-interval = 2  # in s
+interval = 1  # in s
 neutralCamNr = 0
 homeCamNr = 8
 awayCamNr = 9
@@ -171,7 +171,7 @@ def exitRoom():
     clickButton("EXITROOM")
 
     # Exit room can take a while
-    sleep(2)
+    sleep(1)
 
     # Press 0 to switch to default view
     type("0")
