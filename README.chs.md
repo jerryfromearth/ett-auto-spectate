@@ -1,5 +1,7 @@
 # Eleven Table Tennis 自动观战
 
+** 已失效！**
+
 这是一个在电脑上运行的程序。它可以让电脑版的ETT自动追踪进入VR设备的ETT所在的房间，从而实现自动观战。
 
 示例: https://www.bilibili.com/video/BV1jR4y1H7gf
