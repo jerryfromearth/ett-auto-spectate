@@ -1,5 +1,7 @@
 # Eleven Table Tennis Auto Spectate 
 
+** OBSOLETE NOW **
+
 [中文版本](https://github.com/jerryfromearth/ett-auto-spectate/blob/main/README.chs.md)
 
 This script runs on PC. It will make the 2D Eleven Table Tennis PC version automatically follow ETT matches played on the headset.
