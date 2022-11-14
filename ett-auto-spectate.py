@@ -1,11 +1,14 @@
 import pyautogui
 import urllib.request
+from socket import timeout
+from urllib.error import HTTPError, URLError
+from json.decoder import JSONDecodeError
 import json
 from time import sleep
 import sys
 
 configFile = "username.txt"
-interval = 1  # in s
+interval = 10  # in s
 neutralCamNr = 0
 homeCamNr = 8
 awayCamNr = 9
@@ -22,6 +25,7 @@ supportedResolutions = [
 resolutionId = 0
 firstMatch = True
 
+pyautogui.FAILSAFE=False
 
 class Position:
     x = 0
@@ -41,6 +45,7 @@ mappings = [
         'JOINROOM': Position(900, 430),
         'HIDEMOUSE': Position(1920-10, 1080-10),
         'EXITROOM': Position(1217, 974),
+        'NO': Position(1024, 831),
     },
     {
         # { width: 3840, height: 2160 },
@@ -173,8 +178,14 @@ def exitRoom():
     # Exit room can take a while
     sleep(1)
 
-    # Press 0 to switch to default view
-    type("0")
+    # Click exit room
+    clickButton("NO")
+
+    # Switch to spectate view
+    type(str(homeCamNr))
+    
+    # Hide mouse
+    clickButton("HIDEMOUSE")
 
 
 def init():
@@ -219,16 +230,41 @@ def isInRoom(user):
     # TODO: This can be done via OCR instead, to minimize server load
     # OR....can also get it from the logs
     try:
-        with urllib.request.urlopen("http://elevenlogcollector-env.js6z6tixhb.us-west-2.elasticbeanstalk.com/ElevenServerLiteSnapshot") as url:
-            json_res = json.loads(url.read().decode())
+        with urllib.request.urlopen("http://elevenlogcollector-env.js6z6tixhb.us-west-2.elasticbeanstalk.com/ElevenServerLiteSnapshot", timeout=20) as url:
+            f = url.read()
+            #print(f)
+            json_res = json.loads(f.decode(url.headers.get_content_charset()))
             users = [x for x in json_res['UsersInRooms']
                      if x['UserName'] == user]
             if (len(users) > 0):
                 print("y",  end='')
                 sys.stdout.flush()
-                return True
-    except:
+                return True            
+    except HTTPError as error:
+        print('HTTP Error: %s', name, error)
+
         print("x",  end='')
+        sys.stdout.flush()
+        return None    
+    except TimeoutError as error:
+        print('time Error: %s', error)
+
+        print("x",  end='')
+        sys.stdout.flush()
+        return None
+    except JSONDecodeError as error:
+        print('JSON Error: %s', error)
+
+        print("x",  end='')
+        sys.stdout.flush()
+        return None        
+    except URLError as error:
+        if isinstance(error.reason, timeout):
+            logging.error('Timeout Error: %s', error)
+        else:
+            logging.error('URL Error: %s', error)
+        
+        print("x",  end='')        
         sys.stdout.flush()
         return None
 
@@ -256,7 +292,7 @@ def main():
         print("Saved initial camera view to key 0")
 
         print(f"👁 Start spectating.")
-        joinRoom()
+        #joinRoom()
 
         while (inRoom == True or inRoom == None):
             inRoom = isInRoom(user)
