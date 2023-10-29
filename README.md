@@ -1,6 +1,7 @@
 # Eleven Table Tennis Auto Spectate 
 
-** OBSOLETE NOW **
+ATTENTION: THIS REPO IS OBSOLETE. I wrote it for an older version of the old UI. With new features and especially new UI added, it would take some effort to adapt the code...and I don't have the time. 
+So, until the developer of ETT has added official following feature to the spectator, I'd recommend trying https://github.com/fabioedoardoluigialberto/ett_auto_spectate_simple instead. 
 
 [中文版本](https://github.com/jerryfromearth/ett-auto-spectate/blob/main/README.chs.md)
 
